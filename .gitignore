@@ -9,5 +9,5 @@ bower_components/
 *.js
 *.map
 
-
+!systemjs.config.js
 
