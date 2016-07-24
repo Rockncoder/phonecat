@@ -1,4 +1,5 @@
 import {Component, Inject} from '@angular/core';
+import {RouteParams} from '@angular/router-deprecated';
 import {Phone, PhoneData} from '../core/phone/phone.service';
 import {CheckmarkPipe} from '../core/checkmark/checkmark.pipe';
 
@@ -13,10 +14,8 @@ export class PhoneDetailComponent {
   phone:PhoneData;
   mainImageUrl:string;
 
-  constructor(@Inject('$routeParams')
-                $routeParams:angular.route.IRouteParamsService,
-              phone:Phone) {
-    phone.get($routeParams['phoneId']).subscribe(phone => {
+  constructor(routeParams:RouteParams, phone:Phone) {
+    phone.get(routeParams.get('phoneId')).subscribe(phone => {
       this.phone = phone;
       this.setImage(phone.images[0]);
     });

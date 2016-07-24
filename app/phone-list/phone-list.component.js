@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var phone_service_1 = require('../core/phone/phone.service');
+var router_deprecated_1 = require('@angular/router-deprecated');
 var PhoneListComponent = (function () {
     function PhoneListComponent(phone) {
         var _this = this;
@@ -54,7 +55,8 @@ var PhoneListComponent = (function () {
     PhoneListComponent = __decorate([
         core_1.Component({
             selector: 'phone-list',
-            templateUrl: 'phone-list/phone-list.template.html'
+            templateUrl: 'phone-list/phone-list.template.html',
+            directives: [router_deprecated_1.RouterLink]
         }), 
         __metadata('design:paramtypes', [phone_service_1.Phone])
     ], PhoneListComponent);

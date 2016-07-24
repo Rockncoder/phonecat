@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
 import {Phone, PhoneData} from '../core/phone/phone.service';
+import {RouterLink} from '@angular/router-deprecated';
 
 @Component({
   selector: 'phone-list',
-  templateUrl: 'phone-list/phone-list.template.html'
+  templateUrl: 'phone-list/phone-list.template.html',
+  directives: [RouterLink]
 })
 
 export class PhoneListComponent {
@@ -18,10 +20,11 @@ export class PhoneListComponent {
     this.orderProp = 'age';
   }
 
-  getPhones(): PhoneData[] {
+  getPhones():PhoneData[] {
     return this.sortPhones(this.filterPhones(this.phones));
   }
-  private filterPhones(phones: PhoneData[]) {
+
+  private filterPhones(phones:PhoneData[]) {
     if (phones && this.query) {
       return phones.filter(phone => {
         let name = phone.name.toLowerCase();
@@ -31,7 +34,8 @@ export class PhoneListComponent {
     }
     return phones;
   }
-  private sortPhones(phones: PhoneData[]) {
+
+  private sortPhones(phones:PhoneData[]) {
     if (phones && this.orderProp) {
       return phones
         .slice(0) // Make a copy
