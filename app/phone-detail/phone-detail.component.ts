@@ -1,26 +1,24 @@
-import { Phone, PhoneData } from '../core/phone/phone.service';
-'use strict';
-
-// Register `phoneDetail` component, along with its associated controller and template
+import {Phone, PhoneData} from '../core/phone/phone.service';
 
 class PhoneDetailController {
-  phone: any;
-  mainImageUrl: string;
-  static $inject = ['$routeParams', 'Phone'];
-  constructor($routeParams: angular.route.IRouteParamsService, Phone: any) {
+  phone:PhoneData;
+  mainImageUrl:string;
+
+  static $inject = ['$routeParams', 'phone'];
+  constructor($routeParams:angular.route.IRouteParamsService, phone:Phone) {
     let phoneId = $routeParams['phoneId'];
-    this.phone = Phone.get({phoneId}, (phone: any) => {
-      this.setImage(phone.images[0]);
+    phone.get(phoneId).subscribe(data => {
+      this.phone = data;
+      this.setImage(data.images[0]);
     });
   }
-  setImage(imageUrl: string) {
+
+  setImage(imageUrl:string) {
     this.mainImageUrl = imageUrl;
   }
 }
 
-angular.
-module('phoneDetail').
-component('phoneDetail', {
+angular.module('phoneDetail').component('phoneDetail', {
   templateUrl: 'phone-detail/phone-detail.template.html',
   controller: PhoneDetailController
 });
