@@ -10,4 +10,3 @@ angular.module('core.phone').factory('phone', upgradeAdapter.downgradeNg2Provide
 
 upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);
 
-console.log('main.ts');
