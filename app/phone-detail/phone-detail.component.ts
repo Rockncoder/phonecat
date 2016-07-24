@@ -1,3 +1,4 @@
+import { Phone, PhoneData } from '../core/phone/phone.service';
 'use strict';
 
 // Register `phoneDetail` component, along with its associated controller and template
